@@ -1,2 +1,2 @@
 # Javascript-Projects
-Some projects I have done in class
+These files are a sample of some of the projects I have done while learning Javascript while at college
