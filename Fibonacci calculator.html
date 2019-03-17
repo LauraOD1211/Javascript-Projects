@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Fibonacci Calculator</title>
+		<script>
+			function fibonacci() {
+				var x1 = parseInt(document.getElementById("txtBox3").value);
+				var x2 = parseInt(document.getElementById("txtBox4").value);
+				var a = parseInt(document.getElementById("txtBox1").value);
+				var b = parseInt(document.getElementById("txtBox2").value);
+				var n = parseInt(document.getElementById("txtBox5").value);
+				var fib;
+				var output = "X1 = " + x1 + "<br>X2 = " + x2;	
+				
+				for (i=3; i<=n; i++){
+					fib = a*x2+b*x1;
+					x1 = x2;
+					x2 = fib;
+					output += "<br>X" + i + " = " + fib;
+				}
+				document.getElementById('results').innerHTML = output;
+			}
+		</script>
+	</head>
+	<body>
+		<body>
+		<h1>Fibonacci Calculator</h1>
+		<p> Fn = <input type="integer" style="width:15px;" id="txtBox1">Fn-1 + <input type="integer" style="width:15px;" id="txtBox2">Fn-2 <br><br>
+			F1 = <input type="integer" style="width:15px;" id="txtBox3"> <br><br>
+			F2 = <input type="integer" style="width:15px;" id="txtBox4"> <br><br>
+			Find F<input type="integer" style="width:15px;" id="txtBox5"></p>
+		<button onclick="fibonacci();">Calculate</button>
+		<p id='results'></p>
+	</body>
+</html>
