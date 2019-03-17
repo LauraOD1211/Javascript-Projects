@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+		var html = '<table border="1"><tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thur</th><th>Fri</th><th>Sat</th></tr><tr>'
+		function makeCalendar(){
+			var days = window.prompt("How many days in the month?");
+			var first = window.prompt("Which day is the first? (0=Sun, 1=Mon, etc.)");
+			days = parseInt(days);
+			first = parseInt(first);
+			var rem = 7-first;
+			var d = new Date();
+			var today = d.getDate();
+			for(i=0;i<first;i++)
+			{
+				html += '<td class="blank"></td>';	//fills space at start of calendar
+			}
+			for(i=1;i<=rem;i++)	//fills first week of calendar
+			{
+				if (i == today) 	//highlights current date
+				{
+					html += '<td class="today">'+i+'</td>';	
+				}
+				else
+				{
+					html += '<td>'+i+'</td>';	
+				}
+			}
+			html += '</tr><tr>';
+			for (i=rem+1;i<=days;i++)	//fills rest of calendar with dates
+			{
+				if (i == today) 
+				{
+					html += '<td class="today">'+i+'</td>';	//highlights the current date
+				}
+				else
+				{
+					html += '<td>'+i+'</td>';
+				}
+				if ((i-rem)%7 == 0){
+					html += '</tr><tr>';	//puts new week on next line
+				}
+			}
+			rem = 7 - ((first+days)%7);
+			for (i=rem;i>0&&i!=7;i--)		//fills out rest of last line 
+			{
+				html += '<td class="blank"></td>';
+			}
+			html += '</tr></table>';
+			document.getElementById('calendar').innerHTML = html;
+		}
+		</script>
+		<style>
+		table
+		{
+			background-color:#00aaee;
+			border-color:#00aaee;
+		}
+		th
+		{
+			color:#ffffff;
+			text-align:center;
+			background-color:#00aaee;
+			border-color:#00aaee;
+		}
+		td
+		{
+			background-color:white;
+			border-color:#00aaee;
+			text-align:center;
+		}
+		.blank
+		{
+			background-color:#e0ffff;
+		}
+		.today
+		{
+			background-color:#22ccff;
+		}
+		</style>
+	</head>
+	<body onload='makeCalendar();'>
+		<div id='calendar'></div>
+	</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			function checkForm() {
+				var category = document.getElementById('category').selectedIndex;
+				var question = document.getElementById('question').value;
+				var name = document.getElementById('name').value;
+				var email = document.getElementById('email').value;
+				var problems = "Errors: <br>";
+				var init = problems.length;
+				//check category
+				if(category==0){
+					problems += "No Category Selected<br>";
+				}
+				//check question
+				if(question==""){
+					problems += "No Question Written<br>";
+				}
+				//check name
+				if(name==""){
+					problems += "No Name Given<br>";
+				}
+				//check email
+				if(email==""){
+					problems += "No Email Given<br>";
+				}
+				else if (email.indexOf("@")==-1 || email.indexOf(".")==-1){
+					problems += "Invalid Email<br>";
+				}
+				//print errors or success message
+				if (init<problems.length){
+					document.getElementById('p1').innerHTML = problems;
+				}
+				else {
+					document.getElementById('p2').innerHTML = "Success thank you";
+				}
+			}
+		</script>
+		<style>
+			html{
+				font-size:20px;
+				font-family:"Lucida Console", Monaco, monospace;
+			}
+			table{
+				background-color:#00aaee;
+				width:400px;
+			}
+			td{
+				width:150px;
+				height:50px;
+				background-color:#d0d0ff;
+				text-align:center;
+			}
+			.lefttd{width:150px}
+			.righttd{width:250px}
+			input{width:230px}
+			textarea{width:230px}
+			.error{color:red}
+			.success{color:#55da12}
+			button {
+				display: inline-block;
+				font-size: 24px;
+				cursor: pointer;
+				text-align: center;
+				text-decoration: none;
+				outline: none;
+				color: #fff;
+				background-color: #00aaee;
+				border: none;
+				border-radius: 5px;
+				box-shadow: 0 6px #999;
+			}
+
+			button:hover {background-color: #0099ee}
+
+			button:active {
+				background-color: #0099ee;
+				box-shadow: 0 2px #666;
+				transform: translateY(4px);
+			}
+		</style>
+	</head>
+	<body>
+		<table border='1'>
+			<tr>
+				<td class="lefttd">Question Category</td>
+				<td class="righttd">
+					<select id='category'>
+						<option value="0">Select Category</option>
+						<option value="1">Goods for Sale</option>
+						<option value="2">Complaints</option>
+						<option value="3">Support</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="lefttd">Question</td>
+				<td class="righttd">
+					<textarea id='question'></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td class="lefttd">Your Name</td>
+				<td class="righttd">
+					<input id='name'>
+				</td>
+			</tr>
+			<tr>
+				<td class="lefttd">Your Email</td>
+				<td class="righttd">
+					<input id='email'>
+				</td>
+			</tr>
+			<tr>
+				<td colspan='2'>
+					<button onclick='checkForm();'>Submit</button>
+				</td>
+			</tr>
+		</table>
+		<p id='p1' class='error'></p>
+		<p id='p2' class='success'></p>
+	</body>
+</html>
